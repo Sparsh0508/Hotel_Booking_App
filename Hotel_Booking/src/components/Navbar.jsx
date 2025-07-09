@@ -90,7 +90,7 @@ const Navbar = () => {
       {/* Desktop Nav */}
       <div className="hidden md:flex items-center gap-4 lg:gap-8">
         {navLinks.map((link, i) => (
-          <a
+          <Link
             key={i}
             href={link.path}
             className={`group flex flex-col gap-0.5 ${
@@ -103,7 +103,7 @@ const Navbar = () => {
                 isScrolled ? "bg-gray-700" : "bg-white"
               } h-0.5 w-0 group-hover:w-full transition-all duration-300`}
             />
-          </a>
+          </Link>
         ))}
         <button
           className={`border px-4 py-1 text-sm font-light rounded-full cursor-pointer ${
@@ -127,7 +127,7 @@ const Navbar = () => {
           <UserButton>
             <UserButton.MenuItems>
               <UserButton.Action
-                label="My Booling"
+                label="My Booking"
                 labelIcon={<BookIcon />}
                 onClick={() => {
                   navigate("/my-bookings");
@@ -151,7 +151,7 @@ const Navbar = () => {
           <UserButton>
             <UserButton.MenuItems>
               <UserButton.Action
-                label="My BooKing"
+                label="My Booking"
                 labelIcon={<BookIcon />}
                 onClick={() => {
                   navigate("/my-bookings");
@@ -183,9 +183,9 @@ const Navbar = () => {
         </button>
 
         {navLinks.map((link, i) => (
-          <a key={i} href={link.path} onClick={() => setIsMenuOpen(false)}>
+          <Link key={i} href={link.path} onClick={() => setIsMenuOpen(false)}>
             {link.name}
-          </a>
+          </Link>
         ))}
 
         {user && (
