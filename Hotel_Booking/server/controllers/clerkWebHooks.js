@@ -17,25 +17,30 @@ const clerkWebHooks = async (req, res) => {
 
     const userData = {
       _id: data.id,
-      email: data.email_addresses[0].email_address, // Corrected key
-      username: `${data.first_name} ${data.last_name}`,
+      email: data.email_addresses[0].email_address,
+      userName: `${data.first_name} ${data.last_name}`,
       image: data.image_url,
+      recentSearchCity: [], // required field
     };
 
     switch (type) {
       case "user.created":
         await User.create(userData);
+        console.log("✅ User created in MongoDB");
         break;
 
       case "user.updated":
         await User.findByIdAndUpdate(data.id, userData);
+        console.log("🔄 User updated");
         break;
 
       case "user.deleted":
-        await User.findByIdAndDelete(data.id); // Removed userData
+        await User.findByIdAndDelete(data.id);
+        console.log("❌ User deleted");
         break;
 
       default:
+        console.log("⚠️ Unhandled event type:", type);
         break;
     }
 
@@ -44,8 +49,8 @@ const clerkWebHooks = async (req, res) => {
       message: "Webhook Received",
     });
   } catch (error) {
-    console.log("Webhook error:", error.message);
-    res.json({
+    console.log("❌ Webhook error:", error.message);
+    res.status(400).json({
       success: false,
       message: error.message,
     });
