@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import Hotel from "./Hotel";
+import Hotel from "./Hotel.js";
 
 const bookingSchema = new mongoose.Schema({
     user: {
@@ -14,15 +14,15 @@ const bookingSchema = new mongoose.Schema({
     },    
     room: {
         type:String,
-        ref:"Hotle",
+        ref:"Hotel",
         required:true
     },
     checkInDate: {
-        type:date,
+        type:Date,
         required:true
     },
     checkOutDate: {
-        type:date,
+        type:Date,
         required:true
     },
     totalPrice:{
@@ -52,6 +52,6 @@ const bookingSchema = new mongoose.Schema({
     timestamps:true
 })
 
-const Booking = mongoose.model("Booking",roomSchema);
+const Booking = mongoose.model("Booking",bookingSchema);
 
 export default Booking;
