@@ -14,8 +14,10 @@
   "homepage": "https://Sparsh0508.github.io/Hotel_Booking_App",
   "dependencies": {
     "@clerk/clerk-react": "^5.32.4",
+    "axios": "^1.11.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "react-hot-toast": "^2.6.0",
     "react-router-dom": "^7.6.3"
   },
   "devDependencies": {

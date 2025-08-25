@@ -27,7 +27,7 @@ app.use("/api/clerk",clerkWebHooks)
 
 app.get('/',(req,res) => res.send("API Is Working hello "))
 app.use('/api/user',userRouter)
-app.use('/api/hotel',hotelRouter)
+app.use('/api/hotels',hotelRouter)
 app.use('/api/rooms',roomRouter)
 app.use('/api/bookings',bookingRouter)
 

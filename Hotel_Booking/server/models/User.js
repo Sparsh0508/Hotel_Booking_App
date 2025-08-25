@@ -3,8 +3,7 @@ import mongoose from "mongoose";
 const userSchema = mongoose.Schema(
   {
     _id: {
-      type: String,
-      required: true,
+      type: String, // Clerk userId
     },
     userName: {
       type: String,
@@ -23,18 +22,16 @@ const userSchema = mongoose.Schema(
       enum: ["user", "hotelOwner"],
       default: "user",
     },
-    recentSearchCity: [
-      {
-        type: String,
-        required: true,
-      },
-    ],
+    recentSearchCity: {
+      type: [String],
+      default: [],
+    },
   },
   {
-    timestamps:true
+    timestamps: true,
   }
 );
 
-const User = mongoose.model("User",userSchema)
+const User = mongoose.model("User", userSchema);
 
-export default User
+export default User;
